@@ -86,7 +86,7 @@ open class VerticalSliderWidget(x: Int,
         return false
     }
 
-    override fun appendNarrations(builder: NarrationMessageBuilder?) {
+    override fun appendClickableNarrations(builder: NarrationMessageBuilder?) {
         appendDefaultNarrations(builder)
     }
 }

@@ -18,15 +18,15 @@ object SPNumberRender {
     const val key = "skill_point"
     object Reader: EventHandler<ItemLoadEvent> {
         override fun handle(event: ItemLoadEvent) {
-            val matcher = pattern.matcher(event.item.name.asString())
+            val matcher = pattern.matcher(event.item.name.string)
             if (matcher.find()) {
                 Skill.fromDisplayName(matcher.group(1))?.let {
-                    val tooltip = event.item.getTooltip(client.player, TooltipContext.Default.NORMAL)
+                    val tooltip = event.item.getTooltip(client.player, TooltipContext.Default.BASIC)
                     val point = tooltip.asSequence()
-                        .filter { it.asString() == "" && it.siblings.isNotEmpty() }
+                        .filter { it.string == "" && it.siblings.isNotEmpty() }
                         .map { it.siblings[0] }
                         .filter { it.siblings.size >= 2 }
-                        .map { pointPattern.matcher(it.siblings[1].asString()) }
+                        .map { pointPattern.matcher(it.siblings[1].string) }
                         .filter { it.find() }.toList()
                         .firstNotNullOfOrNull { it.group(1).toInt() }
                     if (point != null) {

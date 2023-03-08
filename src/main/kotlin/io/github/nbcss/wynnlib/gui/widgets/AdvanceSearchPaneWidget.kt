@@ -52,7 +52,7 @@ class AdvanceSearchPaneWidget<T: BaseItem>(private val screen: DictionaryScreen<
 
     fun getCriteriaList(): List<CriteriaGroup<T>> = criteriaList
 
-    override fun appendNarrations(builder: NarrationMessageBuilder?) {
+    override fun appendClickableNarrations(builder: NarrationMessageBuilder?) {
         appendDefaultNarrations(builder)
     }
 

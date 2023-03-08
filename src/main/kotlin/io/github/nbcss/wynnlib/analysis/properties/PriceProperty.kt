@@ -13,22 +13,22 @@ class PriceProperty: AnalysisProperty {
     override fun set(tooltip: List<Text>, line: Int): Int {
         if (priceTooltip != null)
             return 0
-        if (tooltip[line].asString().isNotEmpty() || tooltip[line].siblings.isEmpty())
+        if (tooltip[line].string.isNotEmpty() || tooltip[line].siblings.isEmpty())
             return 0
         val siblings = tooltip[line].siblings
-        if (siblings[0].asString() == "Price:" && siblings[0].style.color.toString() == "gold") {
+        if (siblings[0].string == "Price:" && siblings[0].style.color.toString() == "gold") {
             var i = 1
             val priceTooltip: MutableList<Text> = mutableListOf()
             priceTooltip.add(tooltip[line])
             while (line + i < tooltip.size) {
                 val text1 = tooltip[line + i]
-                if (text1.asString().isNotEmpty() || text1.siblings.isEmpty())
+                if (text1.string.isNotEmpty() || text1.siblings.isEmpty())
                     break
                 val text2 = text1.siblings[0]
-                if (text2.asString().isNotEmpty() || text2.siblings.isEmpty())
+                if (text2.string.isNotEmpty() || text2.siblings.isEmpty())
                     break
                 val text3 = text2.siblings[0]
-                if (text3.asString() == " - " && text3.style.color.toString() == "gold") {
+                if (text3.string == " - " && text3.style.color.toString() == "gold") {
                     priceTooltip.add(text1)
                 }else{
                     break

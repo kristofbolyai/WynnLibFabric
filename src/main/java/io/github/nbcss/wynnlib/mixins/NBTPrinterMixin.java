@@ -24,7 +24,7 @@ public class NBTPrinterMixin {
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         /*if (focusedSlot != null && focusedSlot.hasStack()){
             *//*ItemStack item = focusedSlot.getStack();
-            List<Text> tooltip = item.getTooltip(MinecraftClient.getInstance().player, TooltipContext.Default.NORMAL);
+            List<Text> tooltip = item.getTooltip(MinecraftClient.getInstance().player, TooltipContext.Default.BASIC);
             for (Text text : tooltip) {
                 System.out.println(text.getString());
             }*//*

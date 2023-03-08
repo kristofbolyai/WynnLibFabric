@@ -30,7 +30,6 @@
     "timer.TimeUpdateMixin",
     "world.ArmourStandEntityMixin",
     "world.ArmourStandUpdateMixin",
-    "world.PlayerSendChatMixin",
     "world.ReceiveChatMixin"
   ],
   "client": [

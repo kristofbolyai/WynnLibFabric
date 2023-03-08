@@ -9,7 +9,7 @@ import net.minecraft.client.sound.SoundManager
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.sound.SoundEvent
 import net.minecraft.sound.SoundEvents
-import net.minecraft.text.LiteralText
+import net.minecraft.text.Text
 import net.minecraft.util.Identifier
 
 class SquareButton(private val texture: Identifier,
@@ -18,9 +18,11 @@ class SquareButton(private val texture: Identifier,
                    private val size: Int,
                    private val screen: TooltipScreen? = null,
                    private val tooltipProvider: TooltipProvider? = null,
-                   private val pressSound: SoundEvent? = SoundEvents.UI_BUTTON_CLICK,
+                   private val pressSound: SoundEvent? = SoundEvents.UI_BUTTON_CLICK.value(),
                    onPress: PressAction):
-    ButtonWidget(x, y, size, size, LiteralText.EMPTY, onPress) {
+
+
+    ButtonWidget(x, y, size, size, Text.empty(), onPress, DEFAULT_NARRATION_SUPPLIER) {
 
     override fun playDownSound(soundManager: SoundManager?) {
         pressSound?.let {

@@ -20,7 +20,6 @@ import io.github.nbcss.wynnlib.utils.range.SimpleIRange
 import io.github.nbcss.wynnlib.utils.signed
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
-import net.minecraft.text.LiteralText
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
@@ -70,7 +69,7 @@ class Tome(json: JsonObject) : Equipment, EquipmentCategory, ConfigurableItem {
     override fun getKey(): String = name
 
     override fun getDisplayText(): Text {
-        return LiteralText(name).formatted(getTier().formatting)
+        return Text.literal(name).formatted(getTier().formatting)
     }
 
     override fun getDisplayName(): String = name
@@ -82,18 +81,18 @@ class Tome(json: JsonObject) : Equipment, EquipmentCategory, ConfigurableItem {
     override fun getTooltip(): List<Text> {
         val tooltip: MutableList<Text> = ArrayList()
         tooltip.add(getDisplayText())
-        tooltip.add(LiteralText.EMPTY)
+        tooltip.add(Text.empty())
         addRequirements(this, tooltip)
-        tooltip.add(LiteralText.EMPTY)
+        tooltip.add(Text.empty())
         /*val effect = getTomeType().getEffect()
         if (effect != null && effectBase != 0) {
             val id = "${signed(effectBase)}${effect.suffix} ${effect.translate().string}"
             val text = EFFECT.translate(null, id).string
             tooltip.addAll(formattingLines(text, "${Formatting.GRAY}", 500))
-            tooltip.add(LiteralText.EMPTY)
+            tooltip.add(Text.empty())
         }*/
         if (addIdentifications(this, tooltip))
-            tooltip.add(LiteralText.EMPTY)
+            tooltip.add(Text.empty())
         addItemSuffix(this, tooltip)
         addRestriction(this, tooltip)
         return tooltip
